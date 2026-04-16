@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
-const API_URL = process.env.API_URL || 'http://localhost:3000';
+const API_URL =
+  process.env.API_URL ||
+  (process.env.NODE_ENV === 'production'
+    ? 'http://studyon-server'
+    : 'http://localhost:3000');
 
 const nextConfig: NextConfig = {
   output: 'standalone',

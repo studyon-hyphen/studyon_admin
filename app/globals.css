@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'TossFace';
+  src: url('/TossFace.ttf') format('truetype');
+  font-display: swap;
+}
+
+.toss-face {
+  font-family: 'TossFace', sans-serif;
+}
+
+@theme inline {
+  --color-primary: #6C5CE7;
+  --color-primary-dark: #5A4BD1;
+  --color-primary-light: #A29BFE;
+  --color-primary-surface: #F0EEFF;
+  --color-accent: #00B894;
+  --color-accent-light: #E6F9F3;
+  --color-warm: #FDCB6E;
+  --color-warm-light: #FFF8E1;
+  --color-hot: #E17055;
+  --color-hot-light: #FFF0EC;
+  --color-sky: #74B9FF;
+  --color-sky-light: #EBF5FF;
+  --color-bg: #F7F8FA;
+  --color-card: #FFFFFF;
+  --color-card-border: #F0EEF5;
+  --color-text-primary: #191F28;
+  --color-text-secondary: #4E5968;
+  --color-text-tertiary: #8B95A1;
+  --color-divider: #F0EEF5;
+  --color-gold: #FFB800;
+  --color-silver: #A8B0BC;
+  --color-bronze: #CD7F32;
+}
+
+:root {
+  --primary: #6C5CE7;
+  --primary-dark: #5A4BD1;
+  --primary-light: #A29BFE;
+  --accent: #00B894;
+  --warm: #FDCB6E;
+  --hot: #E17055;
+  --bg: #F7F8FA;
+  --nav-height: 64px;
+  --nav-bottom-offset: 24px;
+}
+
+@layer base {
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background-color: var(--bg);
+    color: #191F28;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: contain;
+  }
+}
+
+/* ─── Tabular nums ─── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Touch-friendly transitions ─── */
+a, button, [role="button"], input, textarea, select {
+  transition: all 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ─── Toss-style press feedback ─── */
+.press-scale {
+  transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+}
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* ─── Card styles ─── */
+.card-hover {
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(108, 92, 231, 0.1),
+              0 4px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
+              0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.card-shadow-lg {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
+              0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Glass morphism ─── */
+.glass {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.glass-heavy {
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* ─── Gradients ─── */
+.gradient-text {
+  background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #6C5CE7, #A29BFE);
+}
+
+.gradient-hero {
+  background: linear-gradient(160deg, #6C5CE7 0%, #A29BFE 50%, #74B9FF 100%);
+}
+
+/* ─── Floating nav shadow (Toss-grade) ─── */
+.nav-shadow {
+  box-shadow: 0 2px 32px rgba(108, 92, 231, 0.10),
+              0 0 1px rgba(0, 0, 0, 0.08),
+              0 8px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Animations ─── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 350ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 450ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 350ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 250ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-bounce-in {
+  animation: bounce-in 400ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  animation: fade-in-up 400ms cubic-bezier(0.2, 0, 0, 1) forwards;
+  opacity: 0;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 350ms; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ─── Bottom sheet / Modal backdrop ─── */
+.backdrop-dim {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ─── Bottom sheet handle ─── */
+.sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: #D1D5DB;
+  margin: 8px auto 16px;
+}
+
+/* ─── Horizontal scroll snap ─── */
+.scroll-snap-x {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-snap-x::-webkit-scrollbar {
+  display: none;
+}
+.scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* ─── Safe areas ─── */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Mobile content bottom padding for floating nav */
+.mobile-content-pad {
+  padding-bottom: calc(var(--nav-height) + var(--nav-bottom-offset) + env(safe-area-inset-bottom, 0) + 16px);
+}
+
+/* ─── Progress bar ─── */
+@keyframes progress-fill {
+  from { width: 0; }
+}
+.animate-progress {
+  animation: progress-fill 800ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+/* ─── Chip / pill ─── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ─── Skeleton loader ─── */
+.skeleton {
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ─── Number highlight (toss style) ─── */
+.num-highlight {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
